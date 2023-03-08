@@ -40,10 +40,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void _submit(BuildContext context){
     FocusScope.of(context).unfocus();
     if(_formKey.currentState!.validate()){
-      return;
-    }else{
       _formKey.currentState!.save();
       serviceLocator<AuthCubit>().userRegister(email: email, password: password, name: name);
+
     }
   }
 
@@ -68,6 +67,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           );
           return SafeArea(
             child: Form(
+              key: _formKey,
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: SingleChildScrollView(

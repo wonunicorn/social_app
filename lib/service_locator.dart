@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:real_chat_app/feature/data/data_source/remote_data_source.dart';
 import 'package:real_chat_app/feature/data/data_source/remote_data_source_impl.dart';
 import 'package:real_chat_app/feature/data/repository/repository_impl.dart';
+import 'package:real_chat_app/feature/domain/repository/repository.dart';
 import 'package:real_chat_app/feature/domain/use_case/use_case.dart';
 import 'package:real_chat_app/feature/presentation/bloc/auth_cubit.dart';
 
@@ -23,7 +24,7 @@ void init(){
   serviceLocator.registerFactory(() => AuthCubit(serviceLocator(), serviceLocator(), serviceLocator()));
   
   serviceLocator.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImpl(serviceLocator(), serviceLocator(), serviceLocator()));
-  serviceLocator.registerLazySingleton<RepositoryImpl>(() => RepositoryImpl(serviceLocator()));
+  serviceLocator.registerLazySingleton<Repository>(() => RepositoryImpl(serviceLocator()));
 
   serviceLocator.registerLazySingleton<LoginUseCase>(() => LoginUseCase(serviceLocator()));
   serviceLocator.registerLazySingleton<RegisterUseCase>(() => RegisterUseCase(serviceLocator()));
